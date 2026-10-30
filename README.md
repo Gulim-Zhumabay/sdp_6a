@@ -82,7 +82,7 @@ There are 28 tests, including a stress test with 4 producer threads and 1000 eve
 
 ## UML class diagram
 
-![UML class diagram](docs/uml-class-diagram.png)
+![UML class diagram](docs/hotel_diagram.png)
 
 ## Commit history
 
