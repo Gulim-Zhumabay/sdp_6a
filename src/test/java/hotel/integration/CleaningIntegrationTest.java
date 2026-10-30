@@ -41,6 +41,7 @@ class CleaningIntegrationTest {
         bookings.subscribe(EventType.guest_checked_out, updater);
         roomStatus.subscribe(EventType.room_cleaned, updater);
         roomStatus.subscribe(EventType.room_dirty, planner);
+        roomStatus.subscribe(EventType.room_cleaned, planner);
         planner.subscribe(EventType.cleaning_plan_ready, board);
         planner.subscribe(EventType.cleaning_plan_ready, published::add);
     }
@@ -63,6 +64,14 @@ class CleaningIntegrationTest {
     }
 
     @Test
+    void cleaning_a_room_clears_it_from_the_plan() {
+        bookings.checkOut(1, "101");
+        roomStatus.markCleaned(1, "101");
+
+        assertEquals(List.of(), board.planFor(1));
+    }
+
+    @Test
     void cleaned_room_leaves_the_plan() {
         bookings.checkOut(1, "101");
         roomStatus.markCleaned(1, "101");
@@ -70,4 +79,5 @@ class CleaningIntegrationTest {
 
         assertEquals(List.of("102"), board.planFor(1));
     }
+
 }
