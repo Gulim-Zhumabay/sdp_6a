@@ -36,6 +36,11 @@ public class CleaningPlanVisitor implements Visitor<List<Bookable>> {
         return List.of();
     }
 
+    @Override
+    public List<Bookable> visitSpa(Spa spa) {
+        return dirtyOnly(spa);
+    }
+
     private List<Bookable> dirtyOnly(Bookable bookable) {
         return bookable.isDirty() ? List.of(bookable) : List.of();
     }

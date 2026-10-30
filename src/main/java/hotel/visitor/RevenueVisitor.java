@@ -34,6 +34,11 @@ public class RevenueVisitor implements Visitor<Double> {
         return restaurant.getDailyRevenue();
     }
 
+    @Override
+    public Double visitSpa(Spa spa) {
+        return income(spa);
+    }
+
     private double income(Bookable bookable) {
         return bookable.isOccupied() ? bookable.getPrice() : 0;
     }

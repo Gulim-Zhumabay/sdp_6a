@@ -39,6 +39,11 @@ public class JsonExportVisitor implements Visitor<String> {
                 + "\",\"dailyRevenue\":" + restaurant.getDailyRevenue() + "}";
     }
 
+    @Override
+    public String visitSpa(Spa spa) {
+        return "{" + bookableFields("spa", spa) + ",\"treatmentRooms\":" + spa.getTreatmentRooms() + "}";
+    }
+
     private String bookableFields(String type, Bookable bookable) {
         return "\"type\":\"" + type + "\",\"id\":\"" + bookable.getId()
                 + "\",\"price\":" + bookable.getPrice()

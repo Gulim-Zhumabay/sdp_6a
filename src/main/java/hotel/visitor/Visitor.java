@@ -14,4 +14,6 @@ public interface Visitor<R> {
     R visitConferenceHall(ConferenceHall hall);
 
     R visitRestaurant(Restaurant restaurant);
+
+    R visitSpa(Spa spa);
 }

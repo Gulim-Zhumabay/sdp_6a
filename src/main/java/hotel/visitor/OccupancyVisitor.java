@@ -38,6 +38,11 @@ public class OccupancyVisitor implements Visitor<OccupancyReport> {
         return report();
     }
 
+    @Override
+    public OccupancyReport visitSpa(Spa spa) {
+        return count(spa);
+    }
+
     private OccupancyReport count(Bookable bookable) {
         total++;
         if (bookable.isOccupied()) {

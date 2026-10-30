@@ -37,6 +37,11 @@ public class MostExpensiveUnitVisitor implements Visitor<Optional<Bookable>> {
         return Optional.empty();
     }
 
+    @Override
+    public Optional<Bookable> visitSpa(Spa spa) {
+        return Optional.of(spa);
+    }
+
     private Optional<Bookable> best(List<? extends Element> items) {
         Optional<Bookable> best = Optional.empty();
         for (Element item : items) {

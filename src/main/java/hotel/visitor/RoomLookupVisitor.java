@@ -46,6 +46,11 @@ public class RoomLookupVisitor implements Visitor<Optional<Bookable>> {
         return bookable.getId().equals(roomId) ? Optional.of(bookable) : Optional.empty();
     }
 
+    @Override
+    public Optional<Bookable> visitSpa(Spa spa) {
+        return match(spa);
+    }
+
     private Optional<Bookable> firstMatch(List<? extends Element> items) {
         for (Element item : items) {
             Optional<Bookable> found = item.accept(this);
